@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About · Advanced DevOps Webserver</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/logo.svg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <img src="assets/logo.svg" alt="Logo" class="logo" />
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="version.json" target="_blank" rel="noopener">Version</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container prose">
+    <h1>About this Project</h1>
+    <p>This static site is designed for DevOps demos with Jenkins, Git/GitHub, and Docker.</p>
+    <ul>
+      <li><strong>Build info:</strong> surfaced from <code>version.json</code>.</li>
+      <li><strong>Smoke tests:</strong> curl <code>/health</code>.</li>
+      <li><strong>Caching:</strong> aggressive for assets, disabled for HTML.</li>
+      <li><strong>Security:</strong> opinionated CSP + headers.</li>
+    </ul>
+    <p>Use it for CI/CD tutorials, interviews, or internal demos.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Advanced DevOps Webserver</small>
+    </div>
+  </footer>
+
+  <script defer src="assets/main.js"></script>
+</body>
+</html>

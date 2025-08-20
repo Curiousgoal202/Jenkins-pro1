@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metrics · Advanced DevOps Webserver</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/logo.svg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <img src="assets/logo.svg" alt="Logo" class="logo" />
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="metrics.html" class="active">Metrics</a>
+        <a href="version.json" target="_blank" rel="noopener">Version</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Client-Side Metrics</h1>
+    <div class="card">
+      <p><strong>Navigation Timing</strong> (calculated in the browser):</p>
+      <pre id="nav-timing" class="code"></pre>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Advanced DevOps Webserver</small>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      try {
+        const [nav] = performance.getEntriesByType('navigation');
+        const info = {
+          dns: (nav.domainLookupEnd - nav.domainLookupStart).toFixed(2) + 'ms',
+          tcp: (nav.connectEnd - nav.connectStart).toFixed(2) + 'ms',
+          ttfb: (nav.responseStart - nav.requestStart).toFixed(2) + 'ms',
+          download: (nav.responseEnd - nav.responseStart).toFixed(2) + 'ms',
+          dom_interactive: (nav.domInteractive - nav.startTime).toFixed(2) + 'ms',
+          total_load: (nav.loadEventEnd - nav.startTime).toFixed(2) + 'ms'
+        };
+        document.getElementById('nav-timing').textContent = JSON.stringify(info, null, 2);
+      } catch (e) {
+        document.getElementById('nav-timing').textContent = 'Performance API not supported.';
+      }
+    });
+  </script>
+  <script defer src="assets/main.js"></script>
+</body>
+</html>

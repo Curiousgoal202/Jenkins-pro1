@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced DevOps Webserver</title>
+  <link rel="preload" href="assets/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/logo.svg" />
+  <meta name="description" content="Static site packaged with Docker and built by Jenkins." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <img src="assets/logo.svg" alt="Logo" class="logo" />
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="metrics.html">Metrics</a>
+        <a href="version.json" target="_blank" rel="noopener">Version</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Advanced DevOps Webserver</h1>
+      <p>Static site + Nginx + Docker — built on Jenkins, stored on GitHub.</p>
+      <div class="cta-row">
+        <a class="btn" href="about.html">Explore Features</a>
+        <a class="btn btn-outline" href="metrics.html">View Metrics</a>
+      </div>
+      <div id="build-banner" class="build-banner" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <main class="container grid">
+    <article class="card">
+      <h2>Immutable deploys</h2>
+      <p>Each build bakes assets and <code>version.json</code> into an image tag <em>(e.g., build-42)</em>.</p>
+    </article>
+    <article class="card">
+      <h2>Health Endpoint</h2>
+      <p>Nginx serves <code>/health</code> for smoke tests and Kubernetes probes.</p>
+    </article>
+    <article class="card">
+      <h2>Security & Cache</h2>
+      <p>Security headers + long-lived cache for assets, no-cache for HTML.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Advanced DevOps Webserver</small>
+    </div>
+  </footer>
+
+  <script defer src="assets/main.js"></script>
+</body>
+</html>
